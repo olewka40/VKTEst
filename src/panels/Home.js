@@ -1,44 +1,52 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import Panel from "@vkontakte/vkui/dist/components/Panel/Panel";
 import PanelHeader from "@vkontakte/vkui/dist/components/PanelHeader/PanelHeader";
 import Button from "@vkontakte/vkui/dist/components/Button/Button";
 import Group from "@vkontakte/vkui/dist/components/Group/Group";
 import Cell from "@vkontakte/vkui/dist/components/Cell/Cell";
-import Div from "@vkontakte/vkui/dist/components/Div/Div";
 import Avatar from "@vkontakte/vkui/dist/components/Avatar/Avatar";
+import { UserContext } from "../context/UserContext";
+import styled from "styled-components";
 
-const Home = ({ id, go, fetchedUser }) => (
-  <Panel id={id}>
-    <PanelHeader>Example</PanelHeader>
-    {fetchedUser && (
-      <Group title="User Data Fetched with VK Bridge">
-        <Cell
-          before={
-            fetchedUser.photo_200 ? (
-              <Avatar src={fetchedUser.photo_200} />
-            ) : null
-          }
-          description={
-            fetchedUser.city && fetchedUser.city.title
-              ? fetchedUser.city.title
-              : ""
-          }
-        >
-          {`${fetchedUser.first_name} ${fetchedUser.last_name}`}
-        </Cell>
+const Home = ({ id, go }) => {
+  const { fetchedUser, setMoney, money } = useContext(UserContext);
+  const takeMoney = () => {
+    setMoney(money + 1);
+  };
+  return (
+    <Panel id={id}>
+      <PanelHeader>Добро пожаловать</PanelHeader>
+      {fetchedUser && (
+        <Group title="User Data Fetched with VK Bridge">
+          <Cell
+            before={
+              fetchedUser.photo_200 ? (
+                <Avatar src={fetchedUser.photo_200} />
+              ) : null
+            }
+            description={
+              fetchedUser.city && fetchedUser.city.title
+                ? fetchedUser.city.title
+                : ""
+            }
+          >
+            {`${fetchedUser.first_name} ${fetchedUser.last_name} `}
+          </Cell>
+        </Group>
+      )}
+      <Cell>Баланс: {money}</Cell>
+      <Group title="Navigation Example">
+        <StyledButton size="xl" level="2" onClick={go} data-to="shop">
+          В магазин
+        </StyledButton>
+        <StyledButton size="xl" level="2" onClick={takeMoney}>
+          Фарм
+        </StyledButton>
       </Group>
-    )}
-
-    <Group title="Navigation Example">
-      <Div>
-        <Button size="xl" level="2" onClick={go} data-to="persik">
-          Машенька привет
-        </Button>
-      </Div>
-    </Group>
-  </Panel>
-);
+    </Panel>
+  );
+};
 
 Home.propTypes = {
   id: PropTypes.string.isRequired,
@@ -54,3 +62,21 @@ Home.propTypes = {
 };
 
 export default Home;
+
+export const StyledButton = styled(Button)`
+  .Button {
+    margin-top: 10px;
+  }
+  .Button--ios {
+    margin-top: 10px;
+  }
+`;
+
+export const StyledButton = styled(Button)`
+  .Button {
+    margin-top: 10px;
+  }
+  .Button--ios {
+    margin-top: 10px;
+  }
+`;
