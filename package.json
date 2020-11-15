@@ -2,6 +2,7 @@
   "name": "mini-app",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://olewka40.github.io/VKTEst/",
   "main": "index.js",
   "scripts": {
     "start": "node_modules/.bin/cross-env PORT=10888 HTTPS=true react-scripts start",
