@@ -71,12 +71,3 @@ export const StyledButton = styled(Button)`
     margin-top: 10px;
   }
 `;
-
-export const StyledButton = styled(Button)`
-  .Button {
-    margin-top: 10px;
-  }
-  .Button--ios {
-    margin-top: 10px;
-  }
-`;
