@@ -5,13 +5,15 @@ import PanelHeader from "@vkontakte/vkui/dist/components/PanelHeader/PanelHeader
 import Button from "@vkontakte/vkui/dist/components/Button/Button";
 import Group from "@vkontakte/vkui/dist/components/Group/Group";
 import Cell from "@vkontakte/vkui/dist/components/Cell/Cell";
-import Div from "@vkontakte/vkui/dist/components/Div/Div";
 import Avatar from "@vkontakte/vkui/dist/components/Avatar/Avatar";
 import { UserContext } from "../context/UserContext";
+import styled from "styled-components";
 
 const Home = ({ id, go }) => {
-  const { fetchedUser } = useContext(UserContext);
-  console.log(fetchedUser);
+  const { fetchedUser, setMoney, money } = useContext(UserContext);
+  const takeMoney = () => {
+    setMoney(money + 1);
+  };
   return (
     <Panel id={id}>
       <PanelHeader>Добро пожаловать</PanelHeader>
@@ -33,13 +35,14 @@ const Home = ({ id, go }) => {
           </Cell>
         </Group>
       )}
-
+      <Cell>Баланс: {money}</Cell>
       <Group title="Navigation Example">
-        <Div>
-          <Button size="xl" level="2" onClick={go} data-to="persik">
-            Начать
-          </Button>
-        </Div>
+        <StyledButton size="xl" level="2" onClick={go} data-to="shop">
+          В магазин
+        </StyledButton>
+        <StyledButton size="xl" level="2" onClick={takeMoney}>
+          Фарм
+        </StyledButton>
       </Group>
     </Panel>
   );
@@ -59,3 +62,12 @@ Home.propTypes = {
 };
 
 export default Home;
+
+export const StyledButton = styled(Button)`
+  .Button {
+    margin-top: 10px;
+  }
+  .Button--ios {
+    margin-top: 10px;
+  }
+`;

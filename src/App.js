@@ -5,13 +5,14 @@ import ScreenSpinner from "@vkontakte/vkui/dist/components/ScreenSpinner/ScreenS
 import "@vkontakte/vkui/dist/vkui.css";
 
 import Home from "./panels/Home";
-import Persik from "./panels/Persik";
 import { UserContext } from "./context/UserContext";
+import { Shop } from "./panels/Shop";
 
 const App = () => {
   const [activePanel, setActivePanel] = useState("home");
   const [fetchedUser, setUser] = useState(null);
   const [popout, setPopout] = useState(<ScreenSpinner size="large" />);
+  const [money, setMoney] = useState(0);
 
   useEffect(() => {
     bridge.subscribe(({ detail: { type, data } }) => {
@@ -34,12 +35,12 @@ const App = () => {
   };
 
   return (
-    <View activePanel={activePanel} popout={popout}>
-      <UserContext.Provider value={{ fetchedUser }}>
-        <Home id="home" go={go} />
-        <Persik id="persik" go={go} />
-      </UserContext.Provider>
-    </View>
+    <UserContext.Provider value={{ money, fetchedUser, setMoney }}>
+      <View activePanel={activePanel} popout={popout}>
+        <Home id="home" fetchedUser={fetchedUser} go={go} />
+        <Shop id="shop" go={go} />
+      </View>
+    </UserContext.Provider>
   );
 };
 
