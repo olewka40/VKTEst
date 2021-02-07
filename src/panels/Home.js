@@ -8,15 +8,27 @@ import Cell from "@vkontakte/vkui/dist/components/Cell/Cell";
 import Avatar from "@vkontakte/vkui/dist/components/Avatar/Avatar";
 import { UserContext } from "../context/UserContext";
 import styled from "styled-components";
+import PanelHeaderButton from "@vkontakte/vkui/dist/components/PanelHeaderButton/PanelHeaderButton";
+import Icon28ChevronBack from "@vkontakte/icons/dist/28/chevron_back";
+import Icon24Back from "@vkontakte/icons/dist/24/back";
+import { IOS, platform } from "@vkontakte/vkui";
+
+const osName = platform();
 
 const Home = ({ id, go }) => {
-  const { fetchedUser, setMoney, money } = useContext(UserContext);
-  const takeMoney = () => {
-    setMoney(money + 1);
-  };
+  const { fetchedUser } = useContext(UserContext);
+
   return (
     <Panel id={id}>
-      <PanelHeader>Добро пожаловать</PanelHeader>
+      <PanelHeader
+        left={
+          <PanelHeaderButton onClick={go} data-to="home">
+            {osName === IOS ? <Icon28ChevronBack /> : <Icon24Back />}
+          </PanelHeaderButton>
+        }
+      >
+        Добро пожаловать в сервис мониторинга транспорта калуги
+      </PanelHeader>
       {fetchedUser && (
         <Group title="User Data Fetched with VK Bridge">
           <Cell
@@ -35,13 +47,12 @@ const Home = ({ id, go }) => {
           </Cell>
         </Group>
       )}
-      <Cell>Баланс: {money}</Cell>
       <Group title="Navigation Example">
-        <StyledButton size="xl" level="2" onClick={go} data-to="shop">
-          В магазин
-        </StyledButton>
-        <StyledButton size="xl" level="2" onClick={takeMoney}>
-          Фарм
+        <StyledButton size="xl" level="2" onClick={go} data-to="Country">
+          Городской транспорт
+        </StyledButton>{" "}
+        <StyledButton size="xl" level="2" onClick={go} data-to="BetweenCountry">
+          Междугородний транспорт
         </StyledButton>
       </Group>
     </Panel>

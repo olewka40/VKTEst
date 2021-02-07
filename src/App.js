@@ -6,13 +6,13 @@ import "@vkontakte/vkui/dist/vkui.css";
 
 import Home from "./panels/Home";
 import { UserContext } from "./context/UserContext";
-import { Shop } from "./panels/Shop";
+import { BetweenCountry } from "./panels/BetweenCountry";
+import { Country } from "./panels/Country";
 
 const App = () => {
   const [activePanel, setActivePanel] = useState("home");
   const [fetchedUser, setUser] = useState(null);
   const [popout, setPopout] = useState(<ScreenSpinner size="large" />);
-  const [money, setMoney] = useState(0);
 
   useEffect(() => {
     bridge.subscribe(({ detail: { type, data } }) => {
@@ -35,10 +35,11 @@ const App = () => {
   };
 
   return (
-    <UserContext.Provider value={{ money, fetchedUser, setMoney }}>
+    <UserContext.Provider value={{ fetchedUser }}>
       <View activePanel={activePanel} popout={popout}>
         <Home id="home" fetchedUser={fetchedUser} go={go} />
-        <Shop id="shop" go={go} />
+        <Country id="Country" go={go} />
+        <BetweenCountry id="BetweenCountry" go={go} />
       </View>
     </UserContext.Provider>
   );
