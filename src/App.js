@@ -3,7 +3,7 @@ import bridge from "@vkontakte/vk-bridge";
 import View from "@vkontakte/vkui/dist/components/View/View";
 import ScreenSpinner from "@vkontakte/vkui/dist/components/ScreenSpinner/ScreenSpinner";
 import "@vkontakte/vkui/dist/vkui.css";
-
+import { transport } from "../src/constants/config";
 import Home from "./panels/Home";
 import { UserContext } from "./context/UserContext";
 import { BetweenCountry } from "./panels/BetweenCountry";
@@ -33,9 +33,9 @@ const App = () => {
   const go = (e) => {
     setActivePanel(e.currentTarget.dataset.to);
   };
-
+  console.log(transport);
   return (
-    <UserContext.Provider value={{ fetchedUser }}>
+    <UserContext.Provider value={{ fetchedUser, transport }}>
       <View activePanel={activePanel} popout={popout}>
         <Home id="home" fetchedUser={fetchedUser} go={go} />
         <Country id="Country" go={go} />

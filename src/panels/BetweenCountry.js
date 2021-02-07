@@ -1,15 +1,18 @@
 import Panel from "@vkontakte/vkui/dist/components/Panel/Panel";
-import PanelHeader from "@vkontakte/vkui/dist/components/PanelHeader/PanelHeader";
-import React from "react";
+import { PanelHeader } from "@vkontakte/vkui";
+import React, { useContext } from "react";
 
-import {IOS, platform} from "@vkontakte/vkui";
+import { IOS, platform } from "@vkontakte/vkui";
 import PanelHeaderButton from "@vkontakte/vkui/dist/components/PanelHeaderButton/PanelHeaderButton";
 import Icon28ChevronBack from "@vkontakte/icons/dist/28/chevron_back";
 import Icon24Back from "@vkontakte/icons/dist/24/back";
+import { transport } from "../constants/config";
+import Button from "@vkontakte/vkui/dist/components/Button/Button";
 
 const osName = platform();
 
 export const BetweenCountry = ({ id, go }) => {
+  const toRoutes = () => {};
   return (
     <Panel id={id}>
       <PanelHeader
@@ -21,6 +24,10 @@ export const BetweenCountry = ({ id, go }) => {
       >
         Выберите маршрут междугороднего транспорта
       </PanelHeader>
+
+      {transport[0].variants.map((el) => (
+        <Button onClick={toRoutes}>{el.name}</Button>
+      ))}
     </Panel>
   );
 };

@@ -12,6 +12,7 @@ import PanelHeaderButton from "@vkontakte/vkui/dist/components/PanelHeaderButton
 import Icon28ChevronBack from "@vkontakte/icons/dist/28/chevron_back";
 import Icon24Back from "@vkontakte/icons/dist/24/back";
 import { IOS, platform } from "@vkontakte/vkui";
+import { transport } from "../constants/config";
 
 const osName = platform();
 
@@ -48,12 +49,16 @@ const Home = ({ id, go }) => {
         </Group>
       )}
       <Group title="Navigation Example">
-        <StyledButton size="xl" level="2" onClick={go} data-to="Country">
-          Городской транспорт
-        </StyledButton>{" "}
-        <StyledButton size="xl" level="2" onClick={go} data-to="BetweenCountry">
-          Междугородний транспорт
-        </StyledButton>
+        {transport.map((variant) => (
+          <StyledButton
+            size="xl"
+            level="2"
+            onClick={go}
+            data-to={variant.enName}
+          >
+            {variant.name}
+          </StyledButton>
+        ))}
       </Group>
     </Panel>
   );
@@ -78,6 +83,9 @@ export const StyledButton = styled(Button)`
   .Button {
     margin-top: 10px;
   }
+  margin: 5px 10px;
+  box-sizing: content-box;
+  width: 91.5%;
   .Button--ios {
     margin-top: 10px;
   }
