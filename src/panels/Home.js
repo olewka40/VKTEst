@@ -28,7 +28,8 @@ const Home = ({ id, go }) => {
           </PanelHeaderButton>
         }
       >
-        Добро пожаловать в сервис мониторинга транспорта калуги
+        Добро пожаловать в сервис <br />
+        мониторинга транспорта калуги
       </PanelHeader>
       {fetchedUser && (
         <Group title="User Data Fetched with VK Bridge">

@@ -8,11 +8,15 @@ import Home from "./panels/Home";
 import { UserContext } from "./context/UserContext";
 import { BetweenCountry } from "./panels/BetweenCountry";
 import { Country } from "./panels/Country";
+import { StopsList } from "./panels/StopsList";
+import { RoutesList } from "./panels/RoutesList";
 
 const App = () => {
   const [activePanel, setActivePanel] = useState("home");
   const [fetchedUser, setUser] = useState(null);
   const [popout, setPopout] = useState(<ScreenSpinner size="large" />);
+  const [route, setRoute] = useState("");
+  const [stops, setStops] = useState("");
 
   useEffect(() => {
     bridge.subscribe(({ detail: { type, data } }) => {
@@ -35,10 +39,15 @@ const App = () => {
   };
   console.log(transport);
   return (
-    <UserContext.Provider value={{ fetchedUser, transport }}>
+    <UserContext.Provider
+      value={{ fetchedUser, transport, setRoute, setStops }}
+    >
       <View activePanel={activePanel} popout={popout}>
         <Home id="home" fetchedUser={fetchedUser} go={go} />
         <Country id="Country" go={go} />
+        <BetweenCountry id="BetweenCountry" go={go} />
+        <RoutesList id="RoutesList" route={route} go={go} />
+        <StopsList id="StopsList" go={go} />
         <BetweenCountry id="BetweenCountry" go={go} />
       </View>
     </UserContext.Provider>
