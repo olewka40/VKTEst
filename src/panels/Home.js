@@ -16,7 +16,7 @@ import { transport } from "../constants/config";
 
 const osName = platform();
 
-const Home = ({ id, go }) => {
+const Home = ({ id, go, transportVar }) => {
   const { fetchedUser } = useContext(UserContext);
 
   return (
@@ -28,8 +28,7 @@ const Home = ({ id, go }) => {
           </PanelHeaderButton>
         }
       >
-        Добро пожаловать в сервис <br />
-        мониторинга транспорта калуги
+        Мониторинг транспорта
       </PanelHeader>
       {fetchedUser && (
         <Group title="User Data Fetched with VK Bridge">

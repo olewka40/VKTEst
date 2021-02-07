@@ -6,13 +6,11 @@ import { IOS, platform } from "@vkontakte/vkui";
 import PanelHeaderButton from "@vkontakte/vkui/dist/components/PanelHeaderButton/PanelHeaderButton";
 import Icon28ChevronBack from "@vkontakte/icons/dist/28/chevron_back";
 import Icon24Back from "@vkontakte/icons/dist/24/back";
-import { transport } from "../constants/config";
 import Button from "@vkontakte/vkui/dist/components/Button/Button";
 
 const osName = platform();
 
-export const BetweenCountry = ({ id, go }) => {
-  const toRoutes = () => {};
+export const RoutesList = ({ id, go }) => {
   return (
     <Panel id={id}>
       <PanelHeader
@@ -22,12 +20,12 @@ export const BetweenCountry = ({ id, go }) => {
           </PanelHeaderButton>
         }
       >
-        Выберите маршрут междугороднего транспорта
+        Выберите время
       </PanelHeader>
 
-      {transport[0].variants.map((el) => (
-        <Button onClick={toRoutes}>{el.name}</Button>
-      ))}
+      <Button onClick={go} data-to="StopsList">
+        123qwfqwfqwf123
+      </Button>
     </Panel>
   );
 };
