@@ -65,7 +65,51 @@ export const countryTransport = [
   {
     id: "0",
     name: "29",
-    routes: [
+    routesTO: [
+      {
+        id: 0,
+        name: "5:17",
+        halt: [
+          {
+            id: "0",
+            name: "Калуга,автовокзал",
+            time: "5-17",
+          },
+          {
+            id: "1",
+            name: "Калуга, 6 школа",
+            time: "5-28",
+          },
+          {
+            id: "2",
+            name: "Кошелев проект",
+            time: "6-00",
+          },
+        ],
+      },
+      {
+        id: 0,
+        name: "5:127",
+        halt: [
+          {
+            id: "0",
+            name: "Калуга,автовокзал",
+            time: "5-17",
+          },
+          {
+            id: "1",
+            name: "Калуга, 6 школа",
+            time: "5-28",
+          },
+          {
+            id: "2",
+            name: "Кошелев проект",
+            time: "6-00",
+          },
+        ],
+      },
+    ],
+    routesOut: [
       {
         id: 0,
         name: "5:17",
@@ -92,7 +136,30 @@ export const countryTransport = [
   {
     id: "1",
     name: "44",
-    routes: [
+    routesTO: [
+      {
+        id: 0,
+        name: "5:17",
+        halt: [
+          {
+            id: "0",
+            name: "Калуга,автовокзал",
+            time: "5-17",
+          },
+          {
+            id: "1",
+            name: "Калуга, 6 школа",
+            time: "5-28",
+          },
+          {
+            id: "2",
+            name: "Кошелев проект",
+            time: "6-00",
+          },
+        ],
+      },
+    ],
+    routesOut: [
       {
         id: 0,
         name: "5:17",

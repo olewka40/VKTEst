@@ -10,6 +10,8 @@ import Icon24Back from "@vkontakte/icons/dist/24/back";
 import { FixedLayout, IOS, platform } from "@vkontakte/vkui";
 import TabsItem from "@vkontakte/vkui/dist/components/TabsItem/TabsItem";
 import Tabs from "@vkontakte/vkui/dist/components/Tabs/Tabs";
+import { Country } from "./Country";
+import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 
 const osName = platform();
 
@@ -17,40 +19,41 @@ const Home = ({ id, go }) => {
   const [activeTab, setActiveTab] = useState("country");
 
   return (
-    <Panel id={id}>
-      <PanelHeader
-        left={
-          <PanelHeaderButton onClick={go} data-to="home">
-            {osName === IOS ? <Icon28ChevronBack /> : <Icon24Back />}
-          </PanelHeaderButton>
-        }
-      >
-        Мониторинг транспорта
-      </PanelHeader>
+    <Router>
+      <Panel id={id}>
+        <PanelHeader
+          left={
+            <PanelHeaderButton onClick={go} data-to="home">
+              {osName === IOS ? <Icon28ChevronBack /> : <Icon24Back />}
+            </PanelHeaderButton>
+          }
+        >
+          Мониторинг транспорта
+        </PanelHeader>
 
-      <>
-        {activeTab === "country" && <>iqg987qgoquhgepqegpqcountry</>}
-        {activeTab === "betweenCountry" && (
-          <>HBOUBHEorbheibnsejnbetweenCountry</>
-        )}
-      </>
-      <FixedLayout vertical="bottom">
-        <Tabs>
-          <TabsItemяё
-            selected={activeTab === "country"}
-            onClick={() => setActiveTab("country")}
-          >
-            Городской транспорт
-          </TabsItemяё>
-          <TabsItem
-            selected={activeTab === "betweenCountry"}
-            onClick={() => setActiveTab("betweenCountry")}
-          >
-            Пригородный
-          </TabsItem>
-        </Tabs>
-      </FixedLayout>
-    </Panel>
+        <>
+          {activeTab === "country" && <Country />}
+          {activeTab === "betweenCountry" && <Country />}
+        </>
+
+        <FixedLayout vertical="bottom">
+          <Tabs>
+            <TabsItem
+              selected={activeTab === "country"}
+              onClick={() => setActiveTab("country")}
+            >
+              Городской транспорт
+            </TabsItem>
+            <TabsItem
+              selected={activeTab === "betweenCountry"}
+              onClick={() => setActiveTab("betweenCountry")}
+            >
+              Пригородный
+            </TabsItem>
+          </Tabs>
+        </FixedLayout>
+      </Panel>
+    </Router>
   );
 };
 

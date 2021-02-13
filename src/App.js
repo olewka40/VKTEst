@@ -31,7 +31,6 @@ const App = () => {
   const go = (e) => {
     setActivePanel(e.currentTarget.dataset.to);
   };
-  console.log(transport);
   return (
     <UserContext.Provider
       value={{
