@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import Panel from "@vkontakte/vkui/dist/components/Panel/Panel";
 import PanelHeader from "@vkontakte/vkui/dist/components/PanelHeader/PanelHeader";
 import Button from "@vkontakte/vkui/dist/components/Button/Button";
 import styled from "styled-components";
 import PanelHeaderButton from "@vkontakte/vkui/dist/components/PanelHeaderButton/PanelHeaderButton";
-import { FixedLayout } from "@vkontakte/vkui";
+import { FixedLayout, Search } from "@vkontakte/vkui";
 import TabsItem from "@vkontakte/vkui/dist/components/TabsItem/TabsItem";
 import Tabs from "@vkontakte/vkui/dist/components/Tabs/Tabs";
 import { Country } from "./Country";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Icon20HomeOutline } from "@vkontakte/icons";
 
-const Home = ({ id, go }) => {
+const Home = ({ id, go, setActiveModal, setModalInfo }) => {
   const [activeTab, setActiveTab] = useState("country");
 
   const [value, setValue] = useState(0);
@@ -32,7 +31,7 @@ const Home = ({ id, go }) => {
 
   return (
     <Router>
-      <Panel id={id}>
+      <MainContainer>
         <PanelHeader
           left={
             <PanelHeaderButton onClick={goHome}>
@@ -46,6 +45,8 @@ const Home = ({ id, go }) => {
         <>
           {activeTab === "country" && (
             <Country
+              setActiveModal={setActiveModal}
+              setModalInfo={setModalInfo}
               value={value}
               setValue={setValue}
               handleChangeIndex={handleChangeIndex}
@@ -53,28 +54,27 @@ const Home = ({ id, go }) => {
           )}
           {/*{activeTab === "betweenCountry" && <Country />}*/}
         </>
-
-        <FixedLayout vertical="bottom">
-          <Tabs>
-            <TabsItem
-              selected={activeTab === "country"}
-              onClick={() => {
-                setTab("country");
-              }}
-            >
-              Городской транспорт
-            </TabsItem>
-            <TabsItem
-              selected={activeTab === "betweenCountry"}
-              onClick={() => {
-                setTab("betweenCountry");
-              }}
-            >
-              Пригородный
-            </TabsItem>
-          </Tabs>
-        </FixedLayout>
-      </Panel>
+      </MainContainer>
+      <FixedLayout vertical="bottom">
+        <Tabs>
+          <TabsItem
+            selected={activeTab === "country"}
+            onClick={() => {
+              setTab("country");
+            }}
+          >
+            Городской транспорт
+          </TabsItem>
+          <TabsItem
+            selected={activeTab === "betweenCountry"}
+            onClick={() => {
+              setTab("betweenCountry");
+            }}
+          >
+            Пригородный
+          </TabsItem>
+        </Tabs>
+      </FixedLayout>
     </Router>
   );
 };
@@ -105,3 +105,4 @@ export const StyledButton = styled(Button)`
     margin-top: 10px;
   }
 `;
+const MainContainer = styled.div``;

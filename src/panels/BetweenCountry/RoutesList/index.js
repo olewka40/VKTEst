@@ -4,17 +4,16 @@ import Tabs from "@vkontakte/vkui/dist/components/Tabs/Tabs";
 import TabsItem from "@vkontakte/vkui/dist/components/TabsItem/TabsItem";
 import Button from "@vkontakte/vkui/dist/components/Button/Button";
 import SwipeableViews from "react-swipeable-views";
+import { HaltList } from "./HaltList";
 import { Card } from "@vkontakte/vkui";
-export const RoutesList = ({ tr, setActiveModal, setModalInfo }) => {
+
+export const RoutesList = ({ tr }) => {
   const [activeTab, setActiveTab] = useState(0);
+  // const [halt, setHalt] = useState();
 
   const [value, setValue] = useState(0);
   const handleChangeIndex = (index) => {
     setValue(index);
-  };
-  const openModal = () => {
-    setActiveModal("transportRoute");
-    setModalInfo(tr);
   };
 
   // const goToRoutesToHalt = (e) => {
@@ -44,9 +43,7 @@ export const RoutesList = ({ tr, setActiveModal, setModalInfo }) => {
       >
         <div value={value}>
           <RoutesContainer>
-            <StyledButton onClick={openModal}>
-              Информация о Маршруте{" "}
-            </StyledButton>
+            <StyledButton>Информация о Маршруте </StyledButton>
             {activeTab === 0 ? (
               <>
                 {tr.routesTO.map((e) => (
@@ -70,7 +67,6 @@ export const RoutesList = ({ tr, setActiveModal, setModalInfo }) => {
             )}
           </RoutesContainer>
         </div>
-
         {/*<div value={value}>*/}
         {/*  {halt !== undefined && <HaltList halt={halt} />}*/}
         {/*</div>*/}
@@ -85,7 +81,6 @@ const RoutesContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 52px;
 `;
 const StyledCard = styled(Card)`
   display: flex;
