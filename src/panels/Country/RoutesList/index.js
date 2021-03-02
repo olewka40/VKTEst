@@ -4,7 +4,6 @@ import Tabs from "@vkontakte/vkui/dist/components/Tabs/Tabs";
 import TabsItem from "@vkontakte/vkui/dist/components/TabsItem/TabsItem";
 import Button from "@vkontakte/vkui/dist/components/Button/Button";
 import SwipeableViews from "react-swipeable-views";
-import { countryTransport } from "../../../constants/config";
 import { HaltList } from "./HaltList";
 
 export const RoutesList = ({ tr }) => {
@@ -17,16 +16,12 @@ export const RoutesList = ({ tr }) => {
   };
 
   const goToRoutesToHalt = (e) => {
-    console.log(e);
     const curRoute = tr.routesTO.filter((num) => num.name === e);
-    console.log(curRoute[0], 123123123);
     setHalt(curRoute[0]);
     setValue(1);
   };
   const goToRoutesOutHalt = (e) => {
-    console.log(e);
     const curRoute = tr.routesOut.filter((num) => num.name === e);
-    console.log(curRoute[0]);
     setHalt(curRoute[0]);
     setValue(1);
   };
@@ -46,27 +41,30 @@ export const RoutesList = ({ tr }) => {
         enableMouseEvents
       >
         <div value={value}>
-          {activeTab === 0 ? (
-            <RoutesContainer>
-              {tr.routesTO.map((e) => (
-                <Button onClick={() => goToRoutesToHalt(e.name)}>
-                  {e.name}
-                </Button>
-              ))}
-            </RoutesContainer>
-          ) : (
-            <RoutesContainer>
-              {tr.routesOut.map((e) => (
-                <Button onClick={() => goToRoutesOutHalt(e.name)}>
-                  {e.name}
-                </Button>
-              ))}
-            </RoutesContainer>
-          )}
+          <RoutesContainer>
+            <StyledButton>Информация о Маршруте </StyledButton>
+            {activeTab === 0 ? (
+              <>
+                {tr.routesTO.map((e) => (
+                  <StyledButton onClick={() => goToRoutesToHalt(e.name)}>
+                    {e.name}
+                  </StyledButton>
+                ))}
+              </>
+            ) : (
+              <>
+                {tr.routesOut.map((e) => (
+                  <StyledButton onClick={() => goToRoutesOutHalt(e.name)}>
+                    {e.name}
+                  </StyledButton>
+                ))}
+              </>
+            )}
+          </RoutesContainer>
         </div>
-        <div value={value}>
-          {halt !== undefined && <HaltList halt={halt} />}
-        </div>
+        {/*<div value={value}>*/}
+        {/*  {halt !== undefined && <HaltList halt={halt} />}*/}
+        {/*</div>*/}
       </SwipeableViews>
     </Container>
   );
@@ -76,8 +74,10 @@ const Container = styled.div``;
 const RoutesContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
-const Route = styled.div`
-  display: flex;
-  flex-direction: column;
+const StyledButton = styled(Button)`
+  width: 300px;
+  margin: 5px;
 `;

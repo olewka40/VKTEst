@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "@vkontakte/vkui/dist/components/Button/Button";
 
 export const HaltList = ({ halt }) => {
-  console.log(halt);
   return (
     <Container>
       {halt.halt.map((e) => (

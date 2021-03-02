@@ -5,26 +5,38 @@ import PanelHeader from "@vkontakte/vkui/dist/components/PanelHeader/PanelHeader
 import Button from "@vkontakte/vkui/dist/components/Button/Button";
 import styled from "styled-components";
 import PanelHeaderButton from "@vkontakte/vkui/dist/components/PanelHeaderButton/PanelHeaderButton";
-import Icon28ChevronBack from "@vkontakte/icons/dist/28/chevron_back";
-import Icon24Back from "@vkontakte/icons/dist/24/back";
-import { FixedLayout, IOS, platform } from "@vkontakte/vkui";
+import { FixedLayout } from "@vkontakte/vkui";
 import TabsItem from "@vkontakte/vkui/dist/components/TabsItem/TabsItem";
 import Tabs from "@vkontakte/vkui/dist/components/Tabs/Tabs";
 import { Country } from "./Country";
-import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
-
-const osName = platform();
+import { BrowserRouter as Router } from "react-router-dom";
+import { Icon20HomeOutline } from "@vkontakte/icons";
 
 const Home = ({ id, go }) => {
   const [activeTab, setActiveTab] = useState("country");
+
+  const [value, setValue] = useState(0);
+
+  const setTab = (active) => {
+    setActiveTab(active);
+    goHome();
+  };
+
+  const handleChangeIndex = (index) => {
+    setValue(index);
+  };
+
+  const goHome = () => {
+    setValue(0);
+  };
 
   return (
     <Router>
       <Panel id={id}>
         <PanelHeader
           left={
-            <PanelHeaderButton onClick={go} data-to="home">
-              {osName === IOS ? <Icon28ChevronBack /> : <Icon24Back />}
+            <PanelHeaderButton onClick={goHome}>
+              <Icon20HomeOutline />
             </PanelHeaderButton>
           }
         >
@@ -32,21 +44,31 @@ const Home = ({ id, go }) => {
         </PanelHeader>
 
         <>
-          {activeTab === "country" && <Country />}
-          {activeTab === "betweenCountry" && <Country />}
+          {activeTab === "country" && (
+            <Country
+              value={value}
+              setValue={setValue}
+              handleChangeIndex={handleChangeIndex}
+            />
+          )}
+          {/*{activeTab === "betweenCountry" && <Country />}*/}
         </>
 
         <FixedLayout vertical="bottom">
           <Tabs>
             <TabsItem
               selected={activeTab === "country"}
-              onClick={() => setActiveTab("country")}
+              onClick={() => {
+                setTab("country");
+              }}
             >
               Городской транспорт
             </TabsItem>
             <TabsItem
               selected={activeTab === "betweenCountry"}
-              onClick={() => setActiveTab("betweenCountry")}
+              onClick={() => {
+                setTab("betweenCountry");
+              }}
             >
               Пригородный
             </TabsItem>
