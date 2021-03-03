@@ -6,15 +6,7 @@ import "@vkontakte/vkui/dist/vkui.css";
 import { transport } from "./constants/config";
 import Home from "./panels/Home";
 import { UserContext } from "./context/UserContext";
-import {
-  ModalCard,
-  ModalPage,
-  ModalPageHeader,
-  ModalRoot,
-  PanelHeaderClose,
-  PanelHeaderSubmit,
-} from "@vkontakte/vkui";
-import { Country } from "./panels/Country";
+import { ModalCard, ModalRoot } from "@vkontakte/vkui";
 
 const App = () => {
   const [activePanel, setActivePanel] = useState("home");
