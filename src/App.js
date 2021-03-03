@@ -50,9 +50,14 @@ const App = () => {
       <ModalCard id="transportRoute">
         {modalInfo !== "" && (
           <>
-            <div>{modalInfo.stopsAb}</div>
+            <div>
+              <b>Прямой маршрут</b>
+              {modalInfo.stopsAb}
+            </div>
             <br />
-            <div>{modalInfo.stopsbA}</div>
+            <div>
+              <b>Обратный маршрут</b> {modalInfo.stopsbA}
+            </div>
           </>
         )}
       </ModalCard>
