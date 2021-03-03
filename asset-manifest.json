@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.js": "/VKTEst/static/js/main.a68202b7.chunk.js",
-    "main.js.map": "/VKTEst/static/js/main.a68202b7.chunk.js.map",
+    "main.js": "/VKTEst/static/js/main.5852eeb0.chunk.js",
+    "main.js.map": "/VKTEst/static/js/main.5852eeb0.chunk.js.map",
     "runtime-main.js": "/VKTEst/static/js/runtime-main.0404eac5.js",
     "runtime-main.js.map": "/VKTEst/static/js/runtime-main.0404eac5.js.map",
     "static/css/2.cdee455b.chunk.css": "/VKTEst/static/css/2.cdee455b.chunk.css",
     "static/js/2.3bc59d0f.chunk.js": "/VKTEst/static/js/2.3bc59d0f.chunk.js",
     "static/js/2.3bc59d0f.chunk.js.map": "/VKTEst/static/js/2.3bc59d0f.chunk.js.map",
     "index.html": "/VKTEst/index.html",
-    "precache-manifest.ad60472cd8d532f7b1efe3fa12101821.js": "/VKTEst/precache-manifest.ad60472cd8d532f7b1efe3fa12101821.js",
+    "precache-manifest.e38ac7747f74c62a299f33d5c1643c6d.js": "/VKTEst/precache-manifest.e38ac7747f74c62a299f33d5c1643c6d.js",
     "service-worker.js": "/VKTEst/service-worker.js",
     "static/css/2.cdee455b.chunk.css.map": "/VKTEst/static/css/2.cdee455b.chunk.css.map",
     "static/js/2.3bc59d0f.chunk.js.LICENSE.txt": "/VKTEst/static/js/2.3bc59d0f.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.0404eac5.js",
     "static/css/2.cdee455b.chunk.css",
     "static/js/2.3bc59d0f.chunk.js",
-    "static/js/main.a68202b7.chunk.js"
+    "static/js/main.5852eeb0.chunk.js"
   ]
 }
