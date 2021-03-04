@@ -4,9 +4,7 @@ import { countryTransport } from "../../constants/config";
 import Button from "@vkontakte/vkui/dist/components/Button/Button";
 import SwipeableViews from "react-swipeable-views";
 import { RoutesList } from "./RoutesList";
-import { UserContext } from "../../context/UserContext";
-import { useContext } from "react/cjs/react.production.min";
-import { Cell, Footer, Group, Search } from "@vkontakte/vkui";
+import { Search } from "@vkontakte/vkui";
 
 export const Country = ({
   value,

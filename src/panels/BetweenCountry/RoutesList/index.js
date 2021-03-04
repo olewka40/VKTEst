@@ -9,23 +9,24 @@ import { Card } from "@vkontakte/vkui";
 
 export const RoutesList = ({ tr }) => {
   const [activeTab, setActiveTab] = useState(0);
-  // const [halt, setHalt] = useState();
+  const [halt, setHalt] = useState();
+  console.log("suka", tr);
 
   const [value, setValue] = useState(0);
   const handleChangeIndex = (index) => {
     setValue(index);
   };
 
-  // const goToRoutesToHalt = (e) => {
-  //   const curRoute = tr.routesTO.filter((num) => num.name === e);
-  //   setHalt(curRoute[0]);
-  //   setValue(1);
-  // };
-  // const goToRoutesOutHalt = (e) => {
-  //   const curRoute = tr.routesOut.filter((num) => num.name === e);
-  //   setHalt(curRoute[0]);
-  //   setValue(1);
-  // };
+  const goToRoutesToHalt = (e) => {
+    const curRoute = tr.routes.filter((num) => num.name === e);
+    setHalt(curRoute[0]);
+    setValue(1);
+  };
+  const goToRoutesOutHalt = (e) => {
+    const curRoute = tr.routesOut.filter((num) => num.name === e);
+    setHalt(curRoute[0]);
+    setValue(1);
+  };
   return (
     <Container>
       <Tabs>
@@ -44,32 +45,18 @@ export const RoutesList = ({ tr }) => {
         <div value={value}>
           <RoutesContainer>
             <StyledButton>Информация о Маршруте </StyledButton>
-            {activeTab === 0 ? (
-              <>
-                {tr.routesTO.map((e) => (
-                  <StyledCard
-                  // onClick={() => goToRoutesToHalt(e.name)}
-                  >
-                    {e.name}
-                  </StyledCard>
-                ))}
-              </>
-            ) : (
-              <>
-                {tr.routesOut.map((e) => (
-                  <StyledCard
-                  // onClick={() => goToRoutesOutHalt(e.name)}
-                  >
-                    {e.name}
-                  </StyledCard>
-                ))}
-              </>
-            )}
+            <>
+              {tr.routes.map((e) => (
+                <StyledButton onClick={() => goToRoutesToHalt(e.name)}>
+                  {e.name}
+                </StyledButton>
+              ))}
+            </>
           </RoutesContainer>
         </div>
-        {/*<div value={value}>*/}
-        {/*  {halt !== undefined && <HaltList halt={halt} />}*/}
-        {/*</div>*/}
+        <div value={value}>
+          {halt !== undefined && <HaltList halt={halt} />}
+        </div>
       </SwipeableViews>
     </Container>
   );

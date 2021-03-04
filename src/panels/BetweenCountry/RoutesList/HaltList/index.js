@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 export const HaltList = ({ halt }) => {
+  console.log(halt);
   return (
     <Container>
       {halt.halt.map((e) => (

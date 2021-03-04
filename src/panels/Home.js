@@ -4,12 +4,13 @@ import PanelHeader from "@vkontakte/vkui/dist/components/PanelHeader/PanelHeader
 import Button from "@vkontakte/vkui/dist/components/Button/Button";
 import styled from "styled-components";
 import PanelHeaderButton from "@vkontakte/vkui/dist/components/PanelHeaderButton/PanelHeaderButton";
-import { FixedLayout, Search } from "@vkontakte/vkui";
+import { FixedLayout } from "@vkontakte/vkui";
 import TabsItem from "@vkontakte/vkui/dist/components/TabsItem/TabsItem";
 import Tabs from "@vkontakte/vkui/dist/components/Tabs/Tabs";
 import { Country } from "./Country";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Icon20HomeOutline } from "@vkontakte/icons";
+import { BetweenCountry } from "./BetweenCountry";
 
 const Home = ({ id, go, setActiveModal, setModalInfo }) => {
   const [activeTab, setActiveTab] = useState("country");
@@ -35,7 +36,7 @@ const Home = ({ id, go, setActiveModal, setModalInfo }) => {
         <PanelHeader
           left={
             <PanelHeaderButton onClick={goHome}>
-              <Icon20HomeOutline />
+              <Icon20HomeOutline style={{ marginLeft: 10 }} />
             </PanelHeaderButton>
           }
         >
@@ -52,7 +53,7 @@ const Home = ({ id, go, setActiveModal, setModalInfo }) => {
               handleChangeIndex={handleChangeIndex}
             />
           )}
-          {/*{activeTab === "betweenCountry" && <Country />}*/}
+          {activeTab === "betweenCountry" && <BetweenCountry />}
         </>
       </MainContainer>
       <FixedLayout vertical="bottom">

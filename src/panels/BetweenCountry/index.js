@@ -1,36 +1,59 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { countryTransport } from "../../constants/config";
+import { transport } from "../../constants/config";
 import Button from "@vkontakte/vkui/dist/components/Button/Button";
 import SwipeableViews from "react-swipeable-views";
 import { RoutesList } from "./RoutesList";
-import { UserContext } from "../../context/UserContext";
-import { useContext } from "react/cjs/react.production.min";
+import { Search } from "@vkontakte/vkui";
 
-export const Country = ({ value, setValue, handleChangeIndex }) => {
+export const BetweenCountry = ({
+  handleChangeIndex,
+  setActiveModal,
+  setModalInfo,
+}) => {
   const [tr, setTr] = useState();
+  const [search, setSearch] = useState();
+  const [searchRes, setSearchRes] = useState(transport);
+  const [value, setValue] = useState(0);
 
+  const onChangeSearch = (e) => {
+    setSearchRes("");
+    setSearch(e.target.value);
+    const searcher = search;
+    setSearchRes(
+      transport.filter(
+        (e) => e.name.indexOf(searcher) > -1 || e.stopsAb.indexOf(searcher) > -1
+      )
+    );
+  };
   const goToRoutes = (e) => {
-    const curTr = countryTransport.filter((num) => num.name === e);
+    const curTr = transport.filter((num) => num.name === e);
     setTr(curTr[0]);
     setValue(1);
   };
+
   return (
     <Container>
-      <SwipeableViews
-        index={value}
-        onChangeIndex={handleChangeIndex}
-        enableMouseEvents
-      >
+      <Search value={search} onChange={onChangeSearch} after={null} />
+
+      <StyledSwipeableViews index={value} onChangeIndex={handleChangeIndex}>
         <Numbers value={value}>
-          {countryTransport.map((e) => (
+          {searchRes.map((e) => (
             <StyledButton onClick={() => goToRoutes(e.name)}>
-              Маршрут №{e.name}
+              {e.name}
             </StyledButton>
           ))}
         </Numbers>
-        <div value={value}>{tr !== undefined && <RoutesList tr={tr} />}</div>
-      </SwipeableViews>
+        <div value={value}>
+          {tr !== undefined && (
+            <RoutesList
+              setActiveModal={setActiveModal}
+              setModalInfo={setModalInfo}
+              tr={tr}
+            />
+          )}
+        </div>
+      </StyledSwipeableViews>
     </Container>
   );
 };
@@ -45,4 +68,16 @@ const Numbers = styled.div`
 const StyledButton = styled(Button)`
   width: 300px;
   margin: 5px;
+`;
+export const StyledSwipeableViews = styled(SwipeableViews)`
+  .react-swipeable-view-container {
+    height: 100%;
+  }
+  .react-swipeable-view-container > div[aria-hidden="false"] {
+    height: 100%;
+  }
+  .react-swipeable-view-container > div[aria-hidden="true"] {
+    height: 100%;
+  }
+  height: 100%;
 `;
