@@ -22,7 +22,7 @@ export const BetweenCountry = ({
     const searcher = search;
     setSearchRes(
       transport.filter(
-        (e) => e.name.indexOf(searcher) > -1 || e.stopsAb.indexOf(searcher) > -1
+        (e) => e.nameA.indexOf(searcher) > -1 || e.nameB.indexOf(searcher) > -1
       )
     );
   };
@@ -39,8 +39,8 @@ export const BetweenCountry = ({
       <StyledSwipeableViews index={value} onChangeIndex={handleChangeIndex}>
         <Numbers value={value}>
           {searchRes.map((e) => (
-            <StyledButton onClick={() => goToRoutes(e.name)}>
-              {e.name}
+            <StyledButton onClick={() => goToRoutes(e.nameA, e.nameB)}>
+              {e.nameA} - {e.nameB}
             </StyledButton>
           ))}
         </Numbers>
@@ -67,6 +67,7 @@ const Numbers = styled.div`
 `;
 const StyledButton = styled(Button)`
   width: 300px;
+  height: 30px;
   margin: 5px;
 `;
 export const StyledSwipeableViews = styled(SwipeableViews)`

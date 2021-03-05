@@ -5,7 +5,12 @@ import TabsItem from "@vkontakte/vkui/dist/components/TabsItem/TabsItem";
 import Button from "@vkontakte/vkui/dist/components/Button/Button";
 import SwipeableViews from "react-swipeable-views";
 import { Card } from "@vkontakte/vkui";
-export const RoutesList = ({ tr, setActiveModal, setModalInfo }) => {
+export const RoutesList = ({
+  tr,
+  setTransportType,
+  setActiveModal,
+  setModalInfo,
+}) => {
   const [activeTab, setActiveTab] = useState(0);
 
   const [value, setValue] = useState(0);
@@ -14,6 +19,13 @@ export const RoutesList = ({ tr, setActiveModal, setModalInfo }) => {
   };
   const openModal = () => {
     setActiveModal("transportRoute");
+
+    if (activeTab === 0) {
+      setTransportType("routeTO");
+    } else if (activeTab === 1) {
+      setTransportType("routeOUT");
+    }
+
     setModalInfo(tr);
   };
 

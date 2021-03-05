@@ -12,6 +12,7 @@ export const Country = ({
   handleChangeIndex,
   setActiveModal,
   setModalInfo,
+  setTransportType,
 }) => {
   const [tr, setTr] = useState();
   const [search, setSearch] = useState();
@@ -49,6 +50,7 @@ export const Country = ({
           {tr !== undefined && (
             <RoutesList
               setActiveModal={setActiveModal}
+              setTransportType={setTransportType}
               setModalInfo={setModalInfo}
               tr={tr}
             />

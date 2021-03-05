@@ -12,7 +12,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Icon20HomeOutline } from "@vkontakte/icons";
 import { BetweenCountry } from "./BetweenCountry";
 
-const Home = ({ id, go, setActiveModal, setModalInfo }) => {
+const Home = ({ setTransportType, setActiveModal, setModalInfo }) => {
   const [activeTab, setActiveTab] = useState("country");
 
   const [value, setValue] = useState(0);
@@ -40,12 +40,13 @@ const Home = ({ id, go, setActiveModal, setModalInfo }) => {
             </PanelHeaderButton>
           }
         >
-          Мониторинг транспорта
+          Мониторинг расписания транспорта
         </PanelHeader>
 
         <>
           {activeTab === "country" && (
             <Country
+              setTransportType={setTransportType}
               setActiveModal={setActiveModal}
               setModalInfo={setModalInfo}
               value={value}
@@ -53,7 +54,9 @@ const Home = ({ id, go, setActiveModal, setModalInfo }) => {
               handleChangeIndex={handleChangeIndex}
             />
           )}
-          {activeTab === "betweenCountry" && <BetweenCountry />}
+          {activeTab === "betweenCountry" && (
+            <BetweenCountry setTransportType={setTransportType} />
+          )}
         </>
       </MainContainer>
       <FixedLayout vertical="bottom">

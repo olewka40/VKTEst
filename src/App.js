@@ -6,7 +6,18 @@ import "@vkontakte/vkui/dist/vkui.css";
 import { transport } from "./constants/config";
 import Home from "./panels/Home";
 import { UserContext } from "./context/UserContext";
-import { ModalCard, ModalRoot } from "@vkontakte/vkui";
+import {
+  ANDROID,
+  IOS,
+  ModalCard,
+  ModalPageHeader,
+  ModalRoot,
+  PanelHeaderClose,
+  platform,
+} from "@vkontakte/vkui";
+import styled from "styled-components";
+import { Icon24Dismiss } from "@vkontakte/icons";
+import PanelHeaderButton from "@vkontakte/vkui/dist/components/PanelHeaderButton/PanelHeaderButton";
 
 const App = () => {
   const [activePanel, setActivePanel] = useState("home");
@@ -14,10 +25,12 @@ const App = () => {
   const [popout, setPopout] = useState(<ScreenSpinner size="large" />);
   const [activeModal, setActiveModal] = useState(null);
   const [modalInfo, setModalInfo] = useState("");
+  const [transportType, setTransportType] = useState("");
+
   const modalClose = () => {
     setActiveModal(null);
   };
-  console.log(modalInfo);
+
   useEffect(() => {
     bridge.subscribe(({ detail: { type, data } }) => {
       if (type === "VKWebAppUpdateConfig") {
@@ -37,24 +50,49 @@ const App = () => {
   const go = (e) => {
     setActivePanel(e.currentTarget.dataset.to);
   };
+
   const modal = (
-    <ModalRoot activeModal={activeModal} onClose={modalClose}>
+    <ModalRoot
+      activeModal={activeModal}
+      header={
+        <ModalPageHeader
+          right={
+            platform === IOS && (
+              <PanelHeaderButton onClick={modalClose}>
+                <Icon24Dismiss />
+                ца
+              </PanelHeaderButton>
+            )
+          }
+          left={
+            platform === ANDROID && <PanelHeaderClose onClick={modalClose} />
+          }
+        />
+      }
+      onClose={modalClose}
+    >
       <ModalCard id="transportRoute">
         {modalInfo !== "" && (
           <>
-            <div>
-              <b>Прямой маршрут</b>
-              {modalInfo.stopsAb}
-            </div>
+            {transportType === "routeTO" && (
+              <RouteInfo>
+                <b>Прямой маршрут</b>
+                {modalInfo.stopsAb}
+              </RouteInfo>
+            )}
+            {transportType === "routeOUT" && (
+              <RouteInfo>
+                <b>Обратный маршрут</b> {modalInfo.stopsbA}
+              </RouteInfo>
+            )}
+
             <br />
-            <div>
-              <b>Обратный маршрут</b> {modalInfo.stopsbA}
-            </div>
           </>
         )}
       </ModalCard>
     </ModalRoot>
   );
+
   return (
     <UserContext.Provider
       value={{
@@ -69,6 +107,7 @@ const App = () => {
           go={go}
           setActiveModal={setActiveModal}
           setModalInfo={setModalInfo}
+          setTransportType={setTransportType}
         />
       </View>
     </UserContext.Provider>
@@ -76,3 +115,8 @@ const App = () => {
 };
 
 export default App;
+
+const RouteInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
