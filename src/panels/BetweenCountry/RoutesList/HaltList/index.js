@@ -9,6 +9,7 @@ export const HaltList = ({ halt }) => {
         <HaltContainer>
           <div>{e.name}</div>
           <div>{e.time}</div>
+          <>|</>
         </HaltContainer>
       ))}
     </Container>
@@ -22,4 +23,6 @@ const Container = styled.div`
 const HaltContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;

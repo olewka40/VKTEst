@@ -26,8 +26,10 @@ export const BetweenCountry = ({
       )
     );
   };
-  const goToRoutes = (e) => {
-    const curTr = transport.filter((num) => num.name === e);
+  const goToRoutes = (nameA, nameB) => {
+    const curTr = transport.filter(
+      (num) => num.nameA === nameA || num.nameB === nameB
+    );
     setTr(curTr[0]);
     setValue(1);
   };
