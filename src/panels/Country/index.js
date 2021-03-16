@@ -19,12 +19,13 @@ export const Country = ({
   const [searchRes, setSearchRes] = useState(countryTransport);
 
   const onChangeSearch = (e) => {
-    setSearchRes("");
-    setSearch(e.target.value);
+    setSearch(e.target.value.toLowerCase());
     const searcher = search;
     setSearchRes(
       countryTransport.filter(
-        (e) => e.name.indexOf(searcher) > -1 || e.stopsAb.indexOf(searcher) > -1
+        (e) =>
+          e.name.toLowerCase().indexOf(searcher) > -1 ||
+          e.stopsAb.toLowerCase().indexOf(searcher) > -1
       )
     );
   };

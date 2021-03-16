@@ -29,6 +29,7 @@ const App = () => {
 
   const modalClose = () => {
     setActiveModal(null);
+    console.log(activeModal);
   };
 
   useEffect(() => {
@@ -54,23 +55,19 @@ const App = () => {
   const modal = (
     <ModalRoot
       activeModal={activeModal}
-      header={
-        <ModalPageHeader
-          right={
-            platform === IOS && (
-              <PanelHeaderButton onClick={modalClose}>
-                <Icon24Dismiss />
-                ца
-              </PanelHeaderButton>
-            )
-          }
-          left={
-            platform === ANDROID && <PanelHeaderClose onClick={modalClose} />
-          }
-        />
-      }
+      header={<ModalPageHeader />}
       onClose={modalClose}
     >
+      <ModalPageHeader
+        right={
+          platform === IOS && (
+            <PanelHeaderButton onClick={modalClose}>
+              <Icon24Dismiss />
+            </PanelHeaderButton>
+          )
+        }
+        left={platform === ANDROID && <PanelHeaderClose onClick={modalClose} />}
+      />
       <ModalCard id="transportRoute">
         {modalInfo !== "" && (
           <>

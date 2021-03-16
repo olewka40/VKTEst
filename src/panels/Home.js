@@ -55,7 +55,11 @@ const Home = ({ setTransportType, setActiveModal, setModalInfo }) => {
             />
           )}
           {activeTab === "betweenCountry" && (
-            <BetweenCountry setTransportType={setTransportType} />
+            <BetweenCountry
+              setTransportType={setTransportType}
+              setActiveModal={setActiveModal}
+              setModalInfo={setModalInfo}
+            />
           )}
         </>
       </MainContainer>

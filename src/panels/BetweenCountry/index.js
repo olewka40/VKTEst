@@ -9,6 +9,7 @@ import { Search } from "@vkontakte/vkui";
 export const BetweenCountry = ({
   handleChangeIndex,
   setActiveModal,
+  setTransportType,
   setModalInfo,
 }) => {
   const [tr, setTr] = useState();
@@ -50,6 +51,7 @@ export const BetweenCountry = ({
           {tr !== undefined && (
             <RoutesList
               setActiveModal={setActiveModal}
+              setTransportType={setTransportType}
               setModalInfo={setModalInfo}
               tr={tr}
             />

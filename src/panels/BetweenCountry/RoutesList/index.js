@@ -5,12 +5,15 @@ import TabsItem from "@vkontakte/vkui/dist/components/TabsItem/TabsItem";
 import Button from "@vkontakte/vkui/dist/components/Button/Button";
 import SwipeableViews from "react-swipeable-views";
 import { HaltList } from "./HaltList";
-import { Card } from "@vkontakte/vkui";
 
-export const RoutesList = ({ tr }) => {
+export const RoutesList = ({
+  tr,
+  setActiveModal,
+  setTransportType,
+  setModalInfo,
+}) => {
   const [activeTab, setActiveTab] = useState(0);
   const [halt, setHalt] = useState();
-  console.log("suka", tr);
 
   const [value, setValue] = useState(0);
   const handleChangeIndex = (index) => {
@@ -18,7 +21,7 @@ export const RoutesList = ({ tr }) => {
   };
 
   const goToRoutesToHalt = (e) => {
-    const curRoute = tr.routes.filter((num) => num.name === e);
+    const curRoute = tr.routesTo.filter((num) => num.name === e);
     setHalt(curRoute[0]);
     setValue(1);
   };
@@ -27,6 +30,19 @@ export const RoutesList = ({ tr }) => {
     setHalt(curRoute[0]);
     setValue(1);
   };
+
+  const openModal = () => {
+    setActiveModal("transportRoute");
+
+    if (activeTab === 0) {
+      setTransportType("routeTO");
+    } else if (activeTab === 1) {
+      setTransportType("routeOUT");
+    }
+
+    setModalInfo(tr);
+  };
+
   return (
     <Container>
       <Tabs>
@@ -44,14 +60,26 @@ export const RoutesList = ({ tr }) => {
       >
         <div value={value}>
           <RoutesContainer>
-            <StyledButton>Информация о Маршруте </StyledButton>
-            <>
-              {tr.routes.map((e) => (
-                <StyledButton onClick={() => goToRoutesToHalt(e.name)}>
-                  {e.name}
-                </StyledButton>
-              ))}
-            </>
+            <StyledButton onClick={openModal}>
+              Информация о Маршруте
+            </StyledButton>
+            {activeTab === 0 ? (
+              <>
+                {tr.routesTo.map((e) => (
+                  <StyledButton onClick={() => goToRoutesToHalt(e.name)}>
+                    {e.name}
+                  </StyledButton>
+                ))}
+              </>
+            ) : (
+              <>
+                {tr.routesOut.map((e) => (
+                  <StyledButton onClick={() => goToRoutesOutHalt(e.name)}>
+                    {e.name}
+                  </StyledButton>
+                ))}
+              </>
+            )}
           </RoutesContainer>
         </div>
         <div value={value}>
@@ -69,17 +97,7 @@ const RoutesContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const StyledCard = styled(Card)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 300px;
-  margin: 5px;
-  background-color: #4986cc;
-  height: 30px;
-  color: white;
-  font-weight: 400;
-`;
+
 const StyledButton = styled(Button)`
   width: 300px;
   margin: 5px;
