@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.js": "/VKTEst/static/js/main.3abc2cae.chunk.js",
-    "main.js.map": "/VKTEst/static/js/main.3abc2cae.chunk.js.map",
+    "main.js": "/VKTEst/static/js/main.54a344e9.chunk.js",
+    "main.js.map": "/VKTEst/static/js/main.54a344e9.chunk.js.map",
     "runtime-main.js": "/VKTEst/static/js/runtime-main.0404eac5.js",
     "runtime-main.js.map": "/VKTEst/static/js/runtime-main.0404eac5.js.map",
     "static/css/2.cdee455b.chunk.css": "/VKTEst/static/css/2.cdee455b.chunk.css",
-    "static/js/2.72745ceb.chunk.js": "/VKTEst/static/js/2.72745ceb.chunk.js",
-    "static/js/2.72745ceb.chunk.js.map": "/VKTEst/static/js/2.72745ceb.chunk.js.map",
+    "static/js/2.3bc59d0f.chunk.js": "/VKTEst/static/js/2.3bc59d0f.chunk.js",
+    "static/js/2.3bc59d0f.chunk.js.map": "/VKTEst/static/js/2.3bc59d0f.chunk.js.map",
     "index.html": "/VKTEst/index.html",
-    "precache-manifest.5cac064c589b3ec10217d4fe98400eec.js": "/VKTEst/precache-manifest.5cac064c589b3ec10217d4fe98400eec.js",
+    "precache-manifest.b0219e79b05ee714613902309016ee67.js": "/VKTEst/precache-manifest.b0219e79b05ee714613902309016ee67.js",
     "service-worker.js": "/VKTEst/service-worker.js",
     "static/css/2.cdee455b.chunk.css.map": "/VKTEst/static/css/2.cdee455b.chunk.css.map",
-    "static/js/2.72745ceb.chunk.js.LICENSE.txt": "/VKTEst/static/js/2.72745ceb.chunk.js.LICENSE.txt"
+    "static/js/2.3bc59d0f.chunk.js.LICENSE.txt": "/VKTEst/static/js/2.3bc59d0f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.0404eac5.js",
     "static/css/2.cdee455b.chunk.css",
-    "static/js/2.72745ceb.chunk.js",
-    "static/js/main.3abc2cae.chunk.js"
+    "static/js/2.3bc59d0f.chunk.js",
+    "static/js/main.54a344e9.chunk.js"
   ]
 }
