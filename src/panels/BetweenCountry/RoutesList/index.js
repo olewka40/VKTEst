@@ -60,7 +60,7 @@ export const RoutesList = ({
       >
         <div value={value}>
           <RoutesContainer>
-            <StyledButton onClick={openModal}>
+            <StyledButton mode="commerce" onClick={openModal}>
               Информация о Маршруте
             </StyledButton>
             {activeTab === 0 ? (

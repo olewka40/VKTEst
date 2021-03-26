@@ -14,6 +14,7 @@ export const Country = ({
   setModalInfo,
   setTransportType,
 }) => {
+
   const [tr, setTr] = useState();
   const [search, setSearch] = useState();
   const [searchRes, setSearchRes] = useState(countryTransport);
