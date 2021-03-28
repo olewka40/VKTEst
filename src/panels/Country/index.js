@@ -14,7 +14,6 @@ export const Country = ({
   setModalInfo,
   setTransportType,
 }) => {
-
   const [tr, setTr] = useState();
   const [search, setSearch] = useState();
   const [searchRes, setSearchRes] = useState(countryTransport);
@@ -38,7 +37,7 @@ export const Country = ({
 
   return (
     <Container>
-      <Search value={search} onChange={onChangeSearch} after={null} />
+      <Search onChange={onChangeSearch} after={null} />
 
       <StyledSwipeableViews index={value} onChangeIndex={handleChangeIndex}>
         <Numbers value={value}>
