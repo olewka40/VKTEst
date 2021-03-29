@@ -33,6 +33,7 @@ const Home = ({ setTransportType, setActiveModal, setModalInfo }) => {
   const goHome = () => {
     setValue(0);
     setValueBC(0);
+    setTransportType("country");
   };
 
   return (

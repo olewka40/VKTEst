@@ -15,7 +15,7 @@ export const HaltList = ({ halt }) => {
             </Icon>
             <InfoHalt>
               <Text>Остановка: {e.name}</Text>
-              <Time>Время отправки: {e.time || "неизвестно"}</Time>
+              <Text>Время отправки: {e.time || "неизвестно"}</Text>
             </InfoHalt>
           </StyledCard>
         </HaltContainer>
@@ -36,12 +36,12 @@ const StyledCard = styled(Card)`
   display: flex;
   min-width: 250px;
   //height: 75px;
-  margin: 10px;
   padding: 5px;
   background: #e1e3e6;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin: 10px;
 `;
 const HaltContainer = styled.div`
   display: flex;
@@ -52,13 +52,17 @@ const HaltContainer = styled.div`
 const InfoHalt = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
+  margin: 10px;
 `;
 const Text = styled.div`
   margin: 5px;
+  text-align: left;
+  width: 100%;
+  text-align: left;
 `;
-const Time = styled.div``;
+
 const Icon = styled.div`
   display: flex;
   justify-content: center;
