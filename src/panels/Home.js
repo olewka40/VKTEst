@@ -16,6 +16,7 @@ const Home = ({ setTransportType, setActiveModal, setModalInfo }) => {
   const [activeTab, setActiveTab] = useState("country");
 
   const [value, setValue] = useState(0);
+  const [valueBC, setValueBC] = useState(0);
 
   const setTab = (active) => {
     setActiveTab(active);
@@ -25,9 +26,13 @@ const Home = ({ setTransportType, setActiveModal, setModalInfo }) => {
   const handleChangeIndex = (index) => {
     setValue(index);
   };
+  const handleChangeIndexBC = (index) => {
+    setValueBC(index);
+  };
 
   const goHome = () => {
     setValue(0);
+    setValueBC(0);
   };
 
   return (
@@ -56,9 +61,12 @@ const Home = ({ setTransportType, setActiveModal, setModalInfo }) => {
           )}
           {activeTab === "betweenCountry" && (
             <BetweenCountry
+              valueBC={valueBC}
+              setValueBC={setValueBC}
               setTransportType={setTransportType}
               setActiveModal={setActiveModal}
               setModalInfo={setModalInfo}
+              handleChangeIndex={handleChangeIndexBC}
             />
           )}
         </>

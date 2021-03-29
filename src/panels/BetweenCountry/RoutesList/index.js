@@ -18,6 +18,7 @@ export const RoutesList = ({
   const [value, setValue] = useState(0);
   const handleChangeIndex = (index) => {
     setValue(index);
+    setActiveTab(0);
   };
 
   const goToRoutesToHalt = (e) => {
@@ -58,7 +59,7 @@ export const RoutesList = ({
         onChangeIndex={handleChangeIndex}
         enableMouseEvents
       >
-        <div value={value}>
+        <div value={activeTab}>
           <RoutesContainer>
             <StyledButton mode="commerce" onClick={openModal}>
               Информация о Маршруте

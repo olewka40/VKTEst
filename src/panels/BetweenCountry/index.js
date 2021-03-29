@@ -7,15 +7,16 @@ import { RoutesList } from "./RoutesList";
 import { Search } from "@vkontakte/vkui";
 
 export const BetweenCountry = ({
-  handleChangeIndex,
+  handleChangeIndexBC,
   setActiveModal,
   setTransportType,
   setModalInfo,
+  valueBC,
+  setValueBC,
 }) => {
   const [tr, setTr] = useState();
   const [search, setSearch] = useState();
   const [searchRes, setSearchRes] = useState(transport);
-  const [value, setValue] = useState(0);
 
   const onChangeSearch = (e) => {
     setSearchRes("");
@@ -32,22 +33,22 @@ export const BetweenCountry = ({
       (num) => num.nameA === nameA || num.nameB === nameB
     );
     setTr(curTr[0]);
-    setValue(1);
+    setValueBC(1);
   };
 
   return (
     <Container>
       <Search value={search} onChange={onChangeSearch} after={null} />
 
-      <StyledSwipeableViews index={value} onChangeIndex={handleChangeIndex}>
-        <Numbers value={value}>
+      <StyledSwipeableViews index={valueBC} onChangeIndex={handleChangeIndexBC}>
+        <Numbers value={valueBC}>
           {searchRes.map((e) => (
             <StyledButton onClick={() => goToRoutes(e.nameA, e.nameB)}>
               {e.nameA} - {e.nameB}
             </StyledButton>
           ))}
         </Numbers>
-        <div value={value}>
+        <div value={valueBC}>
           {tr !== undefined && (
             <RoutesList
               setActiveModal={setActiveModal}
