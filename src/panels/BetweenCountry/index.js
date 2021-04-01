@@ -55,6 +55,7 @@ export const BetweenCountry = ({
               setTransportType={setTransportType}
               setModalInfo={setModalInfo}
               tr={tr}
+              setValueBC={setValueBC}
             />
           )}
         </div>

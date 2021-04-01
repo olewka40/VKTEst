@@ -1,12 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-import { Icon28BusOutline } from "@vkontakte/icons";
+import { Icon24BrowserBack, Icon28BusOutline } from "@vkontakte/icons";
 import { Card } from "@vkontakte/vkui";
-
-export const HaltList = ({ halt }) => {
+export const HaltList = ({ setValue, halt }) => {
   console.log(halt);
   return (
     <Container>
+      <BackIconContainer>
+        <Icon24BrowserBack
+          fill="#0067ff"
+          onClick={() => {
+            setValue(0);
+          }}
+        />
+      </BackIconContainer>
+
       {halt.halt.map((e) => (
         <HaltContainer>
           <StyledCard>
@@ -67,4 +75,8 @@ const Icon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+export const BackIconContainer = styled.div`
+  position: absolute;
+  padding: 10px;
 `;

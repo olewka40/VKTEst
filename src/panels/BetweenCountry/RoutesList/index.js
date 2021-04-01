@@ -4,13 +4,15 @@ import Tabs from "@vkontakte/vkui/dist/components/Tabs/Tabs";
 import TabsItem from "@vkontakte/vkui/dist/components/TabsItem/TabsItem";
 import Button from "@vkontakte/vkui/dist/components/Button/Button";
 import SwipeableViews from "react-swipeable-views";
-import { HaltList } from "./HaltList";
+import { BackIconContainer, HaltList } from "./HaltList";
+import { Icon24BrowserBack } from "@vkontakte/icons";
 
 export const RoutesList = ({
   tr,
   setActiveModal,
   setTransportType,
   setModalInfo,
+  setValueBC,
 }) => {
   const [activeTab, setActiveTab] = useState(0);
   const [halt, setHalt] = useState();
@@ -47,13 +49,36 @@ export const RoutesList = ({
   return (
     <Container>
       <Tabs>
-        <TabsItem selected={activeTab === 0} onClick={() => setActiveTab(0)}>
+        <TabsItem
+          selected={activeTab === 0}
+          onClick={() => {
+            setValue(0);
+            setActiveTab(0);
+          }}
+        >
           Маршрут
         </TabsItem>
-        <TabsItem selected={activeTab === 1} onClick={() => setActiveTab(1)}>
+        <TabsItem
+          selected={activeTab === 1}
+          onClick={() => {
+            setValue(0);
+            setActiveTab(1);
+          }}
+        >
           Обратный Маршрут
         </TabsItem>
       </Tabs>
+      <BackIconContainer>
+        <Icon24BrowserBack
+          fill="#0067ff"
+          onClick={() => {
+            setValue(0);
+            setActiveTab(0);
+            setValueBC(0);
+            console.log(123123);
+          }}
+        />
+      </BackIconContainer>
       <SwipeableViews
         index={value}
         onChangeIndex={handleChangeIndex}
@@ -84,7 +109,7 @@ export const RoutesList = ({
           </RoutesContainer>
         </div>
         <div value={value}>
-          {halt !== undefined && <HaltList halt={halt} />}
+          {halt !== undefined && <HaltList setValue={setValue} halt={halt} />}
         </div>
       </SwipeableViews>
     </Container>
